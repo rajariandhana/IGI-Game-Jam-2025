@@ -21,10 +21,12 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Follower:
 		body.set_target(target)
+		body.speed = 300
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Follower:
 		body.set_target(global_position)
+		body.speed = 200
 
 
 #path_2d.curve.clear_points()
