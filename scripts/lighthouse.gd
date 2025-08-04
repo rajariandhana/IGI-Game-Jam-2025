@@ -4,7 +4,7 @@ extends Area2D
 @onready var polygon_2d: Polygon2D = $Polygon2D
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 
-var zero: Vector2 = Vector2(0,0)
+var on: bool
 var target: Vector2
 
 func _process(delta: float) -> void:
@@ -19,36 +19,16 @@ func _process(delta: float) -> void:
 	target = mouse*500
 
 func _on_body_entered(body: Node2D) -> void:
+	#print("ERE")
 	if body is Follower:
 		body.set_target(target)
-		body.speed = 300
+		body.speed = 400
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Follower:
 		body.set_target(global_position)
 		body.speed = 200
 
-
-#path_2d.curve.clear_points()
-	#path_2d.curve.add_point(zero)
-	#path_2d.curve.add_point(zero)
-	#path_2d.curve.add_point(zero)
-	#path_2d.curve.add_point(zero)
-	#path_2d.curve.set_point_position(0, zero)
-
-	#var radius = (mouse - zero).length()
-	#var end: Vector2 = 1.2 * mouse
-	#var sd: Vector2 = 0.2 * mouse
-	#var s1 = mouse+Vector2(-sd.y, sd.x)
-	#var s2 = mouse+Vector2(sd.y, -sd.x)
-	#
-	#path_2d.curve.set_point_position(1, s1)
-	#path_2d.curve.set_point_position(2, end)
-	#path_2d.curve.set_point_position(3, s2)
-	#
-	#var baked = path_2d.curve.get_baked_points()
-	#polygon_2d.polygon = baked
-	#var new_shape = polygon_2d.polygon.duplicate()
-	#if collision_polygon_2d.polygon!=new_shape:
-		#collision_polygon_2d.polygon= new_shape
-	 #= get_global_mouse_position() - global_position
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		on=!on
