@@ -1,5 +1,5 @@
-class_name Follower
 extends CharacterBody2D
+class_name Follower
 
 var sprite: Sprite2D
 var collision: CollisionShape2D
@@ -7,6 +7,9 @@ var collision: CollisionShape2D
 var speed:=150
 var direction:=Vector2.ZERO
 var target_position:=Vector2.ZERO
+
+signal saved(follower:Follower)
+signal crash(follower:Follower)
 
 func _ready() -> void:
 	sprite = $Sprite2D
@@ -34,11 +37,11 @@ func _process(delta):
 	var x = position.x
 	var y = position.y
 	if x<-1920/2 || y<-1080/2 || x>1920/2 || y>1080/2:
-		print("CLEARED")
-		Game.saved()
+		print("SAVED")
+		saved.emit(self)
 		queue_free()
 	if -100<=x && x<=100 && -20<=y && y<=200:
-		Game.die()
+		crash.emit(self)
 		
 	if target_position.x > x:
 		sprite.flip_h = false

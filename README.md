@@ -21,3 +21,7 @@ Additional obstacles
 
 
 Use the light (your cursor) to guide the ship away from your lighthouse!
+
+difficulty idea:
+	cap followers number
+	light can be toggled on off, max shine for 5 second, 2 second timeout

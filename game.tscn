@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmfudhahwgb1l"]
+[gd_scene load_steps=17 format=3 uid="uid://cmfudhahwgb1l"]
 
 [ext_resource type="Script" uid="uid://c1uqne0i5tuli" path="res://scripts/game.gd" id="1_feb5d"]
 [ext_resource type="Texture2D" uid="uid://c0kcisdb8sd7t" path="res://lighthouse.png" id="3_fc0e3"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://3wkdaevhd7qg" path="res://btn-pause.png" id="10_mfdv2"]
 [ext_resource type="Texture2D" uid="uid://bf8qr0ashcyga" path="res://btn-pause-hover.png" id="11_iotsf"]
 [ext_resource type="AudioStream" uid="uid://ckddsts7glocv" path="res://sfx/click-1.mp3" id="13_215e1"]
+[ext_resource type="FontFile" uid="uid://rbx6ylco52ix" path="res://fonts/KGSimplytheBest.otf" id="14_7sc4i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fc0e3"]
 radius = 89.0
@@ -51,26 +52,30 @@ shape = SubResource("CapsuleShape2D_fc0e3")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
 
 [node name="Followers" type="Node2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UIManager" type="Control" parent="."]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
 script = ExtResource("4_lc2xo")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="UIManager"]
 offset_left = -992.0
 offset_top = -570.0
 offset_right = 1000.0
 offset_bottom = 600.0
 color = Color(0, 0, 0, 0)
 
-[node name="BtnPause" type="TextureButton" parent="CanvasLayer"]
+[node name="BtnPause" type="TextureButton" parent="UIManager"]
 offset_left = 1750.0
 offset_top = 54.0
 offset_right = 1860.0
@@ -79,8 +84,7 @@ texture_normal = ExtResource("10_mfdv2")
 texture_pressed = ExtResource("11_iotsf")
 texture_hover = ExtResource("11_iotsf")
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="ScoreLabel" type="Label" parent="UIManager"]
 offset_left = 90.0
 offset_top = 989.0
 offset_right = 350.0
@@ -90,11 +94,23 @@ theme_override_fonts/font = ExtResource("7_215e1")
 theme_override_font_sizes/font_size = 50
 text = "Ship saved: 0"
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="UIManager"]
 offset_right = 1982.0
 offset_bottom = 1133.0
 
-[node name="BtnPlay" type="TextureButton" parent="CanvasLayer/Panel"]
+[node name="Stats" type="Label" parent="UIManager/Panel"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 649.0
+offset_right = 681.0
+offset_bottom = 830.0
+theme_override_colors/font_color = Color(0.921569, 0.894118, 0.831373, 1)
+theme_override_fonts/font = ExtResource("14_7sc4i")
+theme_override_font_sizes/font_size = 84
+text = "Congrats
+you saved x ships!"
+
+[node name="BtnPlay" type="TextureButton" parent="UIManager/Panel"]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 837.0
@@ -104,8 +120,7 @@ texture_normal = ExtResource("4_7jktm")
 texture_pressed = ExtResource("5_ryrav")
 texture_hover = ExtResource("5_ryrav")
 
-[node name="BtnTutorial" type="TextureButton" parent="CanvasLayer/Panel"]
-visible = false
+[node name="BtnTutorial" type="TextureButton" parent="UIManager/Panel"]
 layout_mode = 0
 offset_left = 89.0
 offset_top = 893.0
@@ -115,8 +130,7 @@ texture_normal = ExtResource("6_eow3j")
 texture_pressed = ExtResource("7_j5wjh")
 texture_hover = ExtResource("7_j5wjh")
 
-[node name="BtnResume" type="TextureButton" parent="CanvasLayer/Panel"]
-visible = false
+[node name="BtnResume" type="TextureButton" parent="UIManager/Panel"]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 835.0
@@ -126,7 +140,7 @@ texture_normal = ExtResource("8_vef74")
 texture_pressed = ExtResource("9_hve3p")
 texture_hover = ExtResource("9_hve3p")
 
-[node name="Click" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+[node name="Click" type="AudioStreamPlayer2D" parent="UIManager"]
 stream = ExtResource("13_215e1")
 
 [connection signal="body_entered" from="Lighthouse" to="Lighthouse" method="_on_body_entered"]
@@ -134,7 +148,7 @@ stream = ExtResource("13_215e1")
 [connection signal="area_entered" from="LH" to="." method="_on_lh_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/BtnPause" to="." method="_on_btn_pause_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/BtnPlay" to="." method="_on_btn_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/BtnTutorial" to="CanvasLayer" method="_on_btn_tutorial_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/BtnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="UIManager/BtnPause" to="." method="_on_btn_pause_pressed"]
+[connection signal="pressed" from="UIManager/Panel/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="UIManager/Panel/BtnTutorial" to="." method="_on_btn_tutorial_pressed"]
+[connection signal="pressed" from="UIManager/Panel/BtnResume" to="." method="_on_btn_resume_pressed"]
