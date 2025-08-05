@@ -18,3 +18,6 @@ Additional obstacles
 - sharks
 - kraken
 - tornado
+
+
+Use the light (your cursor) to guide the ship away from your lighthouse!

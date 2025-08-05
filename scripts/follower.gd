@@ -31,12 +31,18 @@ func _process(delta):
 	var direction = target_position-position
 	var movement = direction.normalized()*speed*delta
 	position+=movement
-	if position.x<-1920/2 || position.y<-1080/2 || position.x>1920/2 || position.y>1080/2:
+	var x = position.x
+	var y = position.y
+	if x<-1920/2 || y<-1080/2 || x>1920/2 || y>1080/2:
 		print("CLEARED")
+		Game.saved()
 		queue_free()
-	if target_position.x > position.x:
+	if -100<=x && x<=100 && -20<=y && y<=200:
+		Game.die()
+		
+	if target_position.x > x:
 		sprite.flip_h = false
-	elif target_position.x < position.x:
+	elif target_position.x < x:
 		sprite.flip_h = true
 
 func set_target(target:Vector2):

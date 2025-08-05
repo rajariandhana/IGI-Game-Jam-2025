@@ -1,16 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmfudhahwgb1l"]
+[gd_scene load_steps=16 format=3 uid="uid://cmfudhahwgb1l"]
 
 [ext_resource type="Script" uid="uid://c1uqne0i5tuli" path="res://scripts/game.gd" id="1_feb5d"]
 [ext_resource type="Texture2D" uid="uid://c0kcisdb8sd7t" path="res://lighthouse.png" id="3_fc0e3"]
 [ext_resource type="Script" uid="uid://sdvip6280y30" path="res://scripts/lighthouse.gd" id="3_feb5d"]
 [ext_resource type="Texture2D" uid="uid://bwf038hs4kump" path="res://btn-play.png" id="4_7jktm"]
+[ext_resource type="Script" uid="uid://ybhhryggl43w" path="res://ui_manager.gd" id="4_lc2xo"]
 [ext_resource type="Texture2D" uid="uid://e2jlhx587pt0" path="res://btn-play-hover.png" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://dwdbnjtasd0fa" path="res://btn-tutorial.png" id="6_eow3j"]
+[ext_resource type="FontFile" uid="uid://fl4ltstkua2f" path="res://fonts/KGSimplytheBest.ttf" id="7_215e1"]
 [ext_resource type="Texture2D" uid="uid://bu0d4uycpggdd" path="res://btn-tutorial-hover.png" id="7_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://chp77srg2a5mm" path="res://btn-resume.png" id="8_vef74"]
 [ext_resource type="Texture2D" uid="uid://crpbuasr8s2x4" path="res://btn-resume-hover.png" id="9_hve3p"]
 [ext_resource type="Texture2D" uid="uid://3wkdaevhd7qg" path="res://btn-pause.png" id="10_mfdv2"]
 [ext_resource type="Texture2D" uid="uid://bf8qr0ashcyga" path="res://btn-pause-hover.png" id="11_iotsf"]
+[ext_resource type="AudioStream" uid="uid://ckddsts7glocv" path="res://sfx/click-1.mp3" id="13_215e1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fc0e3"]
 radius = 89.0
@@ -39,7 +42,9 @@ color = Color(1, 1, 1, 0.498039)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lighthouse"]
 polygon = PackedVector2Array(0, 0, 1200, 300, 1200, 0, 1200, -300)
 
-[node name="Island" type="CollisionShape2D" parent="Lighthouse"]
+[node name="LH" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LH"]
 position = Vector2(5, 109)
 shape = SubResource("CapsuleShape2D_fc0e3")
 
@@ -48,9 +53,15 @@ shape = SubResource("CapsuleShape2D_fc0e3")
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [node name="Followers" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("4_lc2xo")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = -992.0
@@ -59,20 +70,43 @@ offset_right = 1000.0
 offset_bottom = 600.0
 color = Color(0, 0, 0, 0)
 
+[node name="BtnPause" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1750.0
+offset_top = 54.0
+offset_right = 1860.0
+offset_bottom = 164.0
+texture_normal = ExtResource("10_mfdv2")
+texture_pressed = ExtResource("11_iotsf")
+texture_hover = ExtResource("11_iotsf")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 90.0
+offset_top = 989.0
+offset_right = 350.0
+offset_bottom = 1042.0
+theme_override_colors/font_color = Color(0.921569, 0.894118, 0.831373, 1)
+theme_override_fonts/font = ExtResource("7_215e1")
+theme_override_font_sizes/font_size = 50
+text = "Ship saved: 0"
+
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_right = 1982.0
 offset_bottom = 1133.0
 
 [node name="BtnPlay" type="TextureButton" parent="CanvasLayer/Panel"]
-offset_left = 91.0
-offset_top = 756.0
-offset_right = 461.0
-offset_bottom = 906.0
+layout_mode = 0
+offset_left = 50.0
+offset_top = 837.0
+offset_right = 420.0
+offset_bottom = 987.0
 texture_normal = ExtResource("4_7jktm")
 texture_pressed = ExtResource("5_ryrav")
 texture_hover = ExtResource("5_ryrav")
 
 [node name="BtnTutorial" type="TextureButton" parent="CanvasLayer/Panel"]
+visible = false
+layout_mode = 0
 offset_left = 89.0
 offset_top = 893.0
 offset_right = 459.0
@@ -83,24 +117,24 @@ texture_hover = ExtResource("7_j5wjh")
 
 [node name="BtnResume" type="TextureButton" parent="CanvasLayer/Panel"]
 visible = false
-offset_left = -827.0
-offset_top = 132.0
-offset_right = -457.0
-offset_bottom = 282.0
+layout_mode = 0
+offset_left = 52.0
+offset_top = 835.0
+offset_right = 422.0
+offset_bottom = 985.0
 texture_normal = ExtResource("8_vef74")
 texture_pressed = ExtResource("9_hve3p")
 texture_hover = ExtResource("9_hve3p")
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 1790.0
-offset_top = 21.0
-offset_right = 1900.0
-offset_bottom = 131.0
-texture_normal = ExtResource("10_mfdv2")
-texture_pressed = ExtResource("11_iotsf")
-texture_hover = ExtResource("11_iotsf")
+[node name="Click" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("13_215e1")
 
 [connection signal="body_entered" from="Lighthouse" to="Lighthouse" method="_on_body_entered"]
 [connection signal="body_exited" from="Lighthouse" to="Lighthouse" method="_on_body_exited"]
+[connection signal="area_entered" from="LH" to="." method="_on_lh_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/BtnPause" to="." method="_on_btn_pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/BtnTutorial" to="CanvasLayer" method="_on_btn_tutorial_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/BtnResume" to="." method="_on_btn_resume_pressed"]
