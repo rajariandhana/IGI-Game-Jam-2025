@@ -1,8 +1,8 @@
 class_name Lighthouse
 extends Area2D
 
-@onready var polygon_2d: Polygon2D = $Polygon2D
-@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var light_shape: Polygon2D = $LightShape
+@onready var light_border: CollisionPolygon2D = $LightBorder
 
 var on: bool
 var target: Vector2
@@ -11,10 +11,10 @@ func _process(delta: float) -> void:
 	var mouse: Vector2 = get_global_mouse_position()
 	var direction = mouse - global_position
 	var angle_to_mouse = direction.angle()
-	collision_polygon_2d.rotation = angle_to_mouse
-	polygon_2d.polygon = collision_polygon_2d.polygon
-	polygon_2d.rotation = angle_to_mouse
-	collision_polygon_2d.position=Vector2.ZERO
+	light_border.rotation = angle_to_mouse
+	light_shape.polygon = light_border.polygon
+	light_shape.rotation = angle_to_mouse
+	light_border.position=Vector2.ZERO
 	
 	target = mouse*500
 

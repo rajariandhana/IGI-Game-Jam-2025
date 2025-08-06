@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5b6ptng1y45j"
-path="res://.godot/imported/follower-steam.png-1879d7920cc1e8fecdc7170bd9d13b75.ctex"
+uid="uid://e2jlhx587pt0"
+path="res://.godot/imported/btn-play-hover.png-e5a8becef3ab6deffee827f4d99ca231.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://follower-steam.png"
-dest_files=["res://.godot/imported/follower-steam.png-1879d7920cc1e8fecdc7170bd9d13b75.ctex"]
+source_file="res://graphics/btn-play-hover.png"
+dest_files=["res://.godot/imported/btn-play-hover.png-e5a8becef3ab6deffee827f4d99ca231.ctex"]
 
 [params]
 

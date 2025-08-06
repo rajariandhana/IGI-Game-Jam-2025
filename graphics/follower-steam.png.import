@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coduck1jgjdqr"
-path="res://.godot/imported/Mercusuram-Logo.png-f0d6b4a67ce9b14dfdf60edf804f45ac.ctex"
+uid="uid://c5b6ptng1y45j"
+path="res://.godot/imported/follower-steam.png-94ecda1d2999fcfc332de2cdbb8d92c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mercusuram-Logo.png"
-dest_files=["res://.godot/imported/Mercusuram-Logo.png-f0d6b4a67ce9b14dfdf60edf804f45ac.ctex"]
+source_file="res://graphics/follower-steam.png"
+dest_files=["res://.godot/imported/follower-steam.png-94ecda1d2999fcfc332de2cdbb8d92c1.ctex"]
 
 [params]
 

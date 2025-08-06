@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwdbnjtasd0fa"
-path="res://.godot/imported/btn-tutorial.png-8d839d64cbef360223ee8cbef2948a2e.ctex"
+uid="uid://crpbuasr8s2x4"
+path="res://.godot/imported/btn-resume-hover.png-fd0676e21db6ad4dcb822dcb9ab7d00c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://btn-tutorial.png"
-dest_files=["res://.godot/imported/btn-tutorial.png-8d839d64cbef360223ee8cbef2948a2e.ctex"]
+source_file="res://graphics/btn-resume-hover.png"
+dest_files=["res://.godot/imported/btn-resume-hover.png-fd0676e21db6ad4dcb822dcb9ab7d00c.ctex"]
 
 [params]
 

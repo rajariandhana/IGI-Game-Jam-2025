@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db4g4cgnfqa5i"
-path="res://.godot/imported/follower-sail.png-fd5958cb31753bac633a7ae6ebc8e13d.ctex"
+uid="uid://bwf038hs4kump"
+path="res://.godot/imported/btn-play.png-53054a573fbb1718d1229843a4c027d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://follower-sail.png"
-dest_files=["res://.godot/imported/follower-sail.png-fd5958cb31753bac633a7ae6ebc8e13d.ctex"]
+source_file="res://graphics/btn-play.png"
+dest_files=["res://.godot/imported/btn-play.png-53054a573fbb1718d1229843a4c027d7.ctex"]
 
 [params]
 

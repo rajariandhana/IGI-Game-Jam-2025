@@ -6,7 +6,7 @@ extends Control
 @onready var btn_tutorial: TextureButton = $Panel/BtnTutorial
 @onready var btn_resume: TextureButton = $Panel/BtnResume
 @onready var click: AudioStreamPlayer2D = $Click
-@onready var score_label: Label = $ScoreLabel
+@onready var saved_label: Label = $SavedLabel
 @onready var stats: Label = $Panel/Stats
 
 func _ready():
@@ -20,7 +20,7 @@ func panel_start():
 	btn_play.visible=true
 	#btn_tutorial.visible=true
 	btn_resume.visible=false
-	score_label.visible=true
+	saved_label.visible=true
 	stats.visible=false
 	stats.text=""
 
@@ -30,7 +30,7 @@ func panel_pause():
 	btn_play.visible=false
 	#btn_tutorial.visible=true
 	btn_resume.visible=true
-	score_label.visible=true
+	saved_label.visible=true
 	stats.visible=false
 
 func panel_playing():
@@ -39,19 +39,19 @@ func panel_playing():
 	#btn_tutorial.visible=false
 	btn_resume.visible=true
 	panel.visible=false
-	score_label.visible=true
+	saved_label.visible=true
 	stats.visible=false
 
-func panel_end(score:int):
+func panel_end(saved:int):
 	#print("panel_end")
 	panel.visible=true
 	btn_pause.visible=false
 	btn_play.visible=true
 	btn_tutorial.visible=false
 	btn_resume.visible=false
-	score_label.visible=false
+	saved_label.visible=false
 	stats.visible=true
-	stats.text = "Congrats\n you saved "+str(score)+" ships!"
+	stats.text = "Congrats\n you saved "+str(saved)+" ships!"
 
-func update_score(score:int):
-	score_label.text = "Ships saved: "+str(score)
+func update_score(saved:int):
+	saved_label.text = "Ships saved: "+str(saved)

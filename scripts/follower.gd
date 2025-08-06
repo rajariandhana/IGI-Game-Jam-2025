@@ -24,11 +24,11 @@ func set_props(type:int, vc:Vector2):
 	position=vc
 	match type:
 		0:
-			sprite.texture = preload("res://follower-sail.png")
+			sprite.texture = preload("res://graphics/follower-sail.png")
 		1:
-			sprite.texture = preload("res://follower-steam.png")
+			sprite.texture = preload("res://graphics/follower-steam.png")
 		2:
-			sprite.texture = preload("res://follower-pirate.png")
+			sprite.texture = preload("res://graphics/follower-pirate.png")
 			
 func _process(delta):
 	var direction = target_position-position
@@ -37,7 +37,7 @@ func _process(delta):
 	var x = position.x
 	var y = position.y
 	if x<-1920/2 || y<-1080/2 || x>1920/2 || y>1080/2:
-		print("SAVED")
+		#print("SAVED")
 		saved.emit(self)
 		queue_free()
 	if -100<=x && x<=100 && -20<=y && y<=200:

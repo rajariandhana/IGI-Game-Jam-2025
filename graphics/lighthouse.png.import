@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chp77srg2a5mm"
-path="res://.godot/imported/btn-resume.png-5772c71c2dbe0de391fe044f564bc0fd.ctex"
+uid="uid://c0kcisdb8sd7t"
+path="res://.godot/imported/lighthouse.png-909dc8e05fd6e7eba59e5fd4e39cdf76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://btn-resume.png"
-dest_files=["res://.godot/imported/btn-resume.png-5772c71c2dbe0de391fe044f564bc0fd.ctex"]
+source_file="res://graphics/lighthouse.png"
+dest_files=["res://.godot/imported/lighthouse.png-909dc8e05fd6e7eba59e5fd4e39cdf76.ctex"]
 
 [params]
 

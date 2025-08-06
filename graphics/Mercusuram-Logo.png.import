@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0kcisdb8sd7t"
-path="res://.godot/imported/lighthouse.png-a260a77329ae3962cc71fe306038024b.ctex"
+uid="uid://coduck1jgjdqr"
+path="res://.godot/imported/Mercusuram-Logo.png-61ea1951328da9092a4d5793dd1172c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lighthouse.png"
-dest_files=["res://.godot/imported/lighthouse.png-a260a77329ae3962cc71fe306038024b.ctex"]
+source_file="res://graphics/Mercusuram-Logo.png"
+dest_files=["res://.godot/imported/Mercusuram-Logo.png-61ea1951328da9092a4d5793dd1172c8.ctex"]
 
 [params]
 

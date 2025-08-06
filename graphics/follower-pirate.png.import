@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwf038hs4kump"
-path="res://.godot/imported/btn-play.png-04287df719b08eb244b0ebdeb750d753.ctex"
+uid="uid://dbjqmci4cybrl"
+path="res://.godot/imported/follower-pirate.png-730d5344b378aae635e24138390a9257.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://btn-play.png"
-dest_files=["res://.godot/imported/btn-play.png-04287df719b08eb244b0ebdeb750d753.ctex"]
+source_file="res://graphics/follower-pirate.png"
+dest_files=["res://.godot/imported/follower-pirate.png-730d5344b378aae635e24138390a9257.ctex"]
 
 [params]
 
