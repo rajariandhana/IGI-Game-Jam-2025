@@ -29,6 +29,10 @@ var GAME_STATE:= STATES.END
 @onready var level_timer: Timer = $LevelTimer
 @onready var followers: Node2D = $Followers
 @onready var ui_manager: Control = $UIManager
+@onready var sfx_click: AudioStreamPlayer2D = $SFX_Click
+
+func _ready():
+	get_tree().paused=true
 
 func reset():
 	print("RESETTING GAME")
@@ -105,23 +109,27 @@ func _on_follower_crash(follower:Follower):
 	GAME_STATE=STATES.END
 
 func _on_btn_pause_pressed() -> void:
+	sfx_click.play()
 	#print("_on_btn_pause_pressed")
 	ui_manager.panel_pause()
 	get_tree().paused=true
 	GAME_STATE=STATES.PAUSING
 
 func _on_btn_play_pressed() -> void:
+	sfx_click.play()
 	#print("_on_btn_play_pressed")
-	reset()
+	await reset()
 	start()
 	GAME_STATE=STATES.PLAYING
 
 func _on_btn_tutorial_pressed() -> void:
+	sfx_click.play()
 	pass
 	#print("_on_btn_tutorial_pressed")
 
 
 func _on_btn_resume_pressed() -> void:
+	sfx_click.play()
 	#print("_on_btn_resume_pressed")
 	ui_manager.panel_playing()
 	get_tree().paused=false

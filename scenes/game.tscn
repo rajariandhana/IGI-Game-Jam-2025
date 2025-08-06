@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmfudhahwgb1l"]
+[gd_scene load_steps=18 format=3 uid="uid://cmfudhahwgb1l"]
 
 [ext_resource type="Script" uid="uid://c1uqne0i5tuli" path="res://scripts/game.gd" id="1_ir15t"]
 [ext_resource type="Script" uid="uid://sdvip6280y30" path="res://scripts/lighthouse.gd" id="2_ca42v"]
 [ext_resource type="Texture2D" uid="uid://c0kcisdb8sd7t" path="res://graphics/lighthouse.png" id="3_rysoc"]
+[ext_resource type="PackedScene" uid="uid://dfbs2l8s8tjay" path="res://scenes/music.tscn" id="4_ca42v"]
 [ext_resource type="Script" uid="uid://ybhhryggl43w" path="res://scripts/ui_manager.gd" id="4_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://3wkdaevhd7qg" path="res://graphics/btn-pause.png" id="5_264po"]
 [ext_resource type="Texture2D" uid="uid://bf8qr0ashcyga" path="res://graphics/btn-pause-hover.png" id="6_1kice"]
@@ -57,6 +58,14 @@ shape = SubResource("CapsuleShape2D_fc0e3")
 wait_time = 5.0
 
 [node name="Followers" type="Node2D" parent="."]
+
+[node name="Music_Main" parent="." instance=ExtResource("4_ca42v")]
+
+[node name="SFX_Click" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(-960, -540)
+stream = ExtResource("15_suyxu")
+bus = &"SFX"
 
 [node name="UIManager" type="Control" parent="."]
 process_mode = 3
@@ -143,9 +152,6 @@ offset_bottom = 985.0
 texture_normal = ExtResource("13_qnb83")
 texture_pressed = ExtResource("14_sww3w")
 texture_hover = ExtResource("14_sww3w")
-
-[node name="Click" type="AudioStreamPlayer2D" parent="UIManager"]
-stream = ExtResource("15_suyxu")
 
 [connection signal="body_entered" from="Lighthouse" to="Lighthouse" method="_on_body_entered"]
 [connection signal="body_exited" from="Lighthouse" to="Lighthouse" method="_on_body_exited"]
